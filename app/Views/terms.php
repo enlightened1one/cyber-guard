@@ -1,0 +1,1 @@
+<div class="card p-4"><h2 class="section-title">Terms of use</h2><p>Users are expected to use the learning platform responsibly and ethically. Course access, grading, and discussion moderation are subject to institutional and platform rules.</p></div>

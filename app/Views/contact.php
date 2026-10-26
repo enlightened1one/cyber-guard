@@ -1,0 +1,1 @@
+<div class="card p-4"><h2 class="section-title">Contact and help</h2><p>For support, email help@cyberguard-demo.edu.ng or contact your institution administrator. This platform is configured for local academic prototype use.</p></div>

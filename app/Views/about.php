@@ -1,0 +1,1 @@
+<div class="card p-4"><h2 class="section-title">About the platform</h2><p>CyberGuard LMS was designed to bridge classroom theory and cyber defense practice in Nigerian tertiary institutions. The platform supports secure learning pathways, practical exercises, and role-based campus workflows.</p></div>

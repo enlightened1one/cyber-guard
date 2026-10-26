@@ -1,0 +1,10 @@
+{
+  "name": "cybersecurity-lms-demo",
+  "description": "Cybersecurity education learning management system for Nigerian tertiary institutions",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}

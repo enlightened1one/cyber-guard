@@ -1,0 +1,1 @@
+<div class="card p-4"><h2 class="section-title">Privacy notice</h2><p>We process academic and account data only for educational support and platform security. Data is not shared with third-party advertisers. Access is restricted by role and institution boundaries.</p></div>
