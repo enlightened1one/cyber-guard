@@ -29,8 +29,18 @@ function loadEnvFile(string $path): void
 loadEnvFile(APP_ROOT . '/.env');
 
 define('APP_ENV', getenv('APP_ENV') ?: 'development');
-define('APP_URL', getenv('APP_URL') ?: getenv('RENDER_EXTERNAL_URL') ?: 'http://localhost:8000');
-define('BASE_URL', rtrim(APP_URL, '/'));
+
+$forwardedProto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+$requestIsHttps = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
+    || str_contains($forwardedProto, 'https');
+$requestHost = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
+$requestOrigin = ($requestIsHttps ? 'https://' : 'http://') . $requestHost;
+$configuredUrl = getenv('APP_URL') ?: getenv('RENDER_EXTERNAL_URL');
+if ($configuredUrl && str_contains(parse_url($configuredUrl, PHP_URL_HOST) ?? '', 'localhost')) {
+    $configuredUrl = null;
+}
+define('APP_URL', rtrim($configuredUrl ?: $requestOrigin, '/'));
+define('BASE_URL', APP_URL);
 define('APP_TIMEZONE', getenv('APP_TIMEZONE') ?: 'Africa/Lagos');
 date_default_timezone_set(APP_TIMEZONE);
 
