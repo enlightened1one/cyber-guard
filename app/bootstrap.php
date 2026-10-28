@@ -29,7 +29,7 @@ function loadEnvFile(string $path): void
 loadEnvFile(APP_ROOT . '/.env');
 
 define('APP_ENV', getenv('APP_ENV') ?: 'development');
-define('APP_URL', getenv('APP_URL') ?: 'http://localhost:8000');
+define('APP_URL', getenv('APP_URL') ?: getenv('RENDER_EXTERNAL_URL') ?: 'http://localhost:8000');
 define('BASE_URL', rtrim(APP_URL, '/'));
 define('APP_TIMEZONE', getenv('APP_TIMEZONE') ?: 'Africa/Lagos');
 date_default_timezone_set(APP_TIMEZONE);

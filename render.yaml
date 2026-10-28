@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: cyber-guard
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_TIMEZONE
+        value: Africa/Lagos
+      - key: DB_DRIVER
+        value: sqlite
+      - key: DB_PATH
+        value: storage/app.sqlite
+      - key: SESSION_SECURE_COOKIE
+        value: true
+    disk:
+      name: cyberguard-data
+      mountPath: /var/www/html/storage
+      sizeGB: 1

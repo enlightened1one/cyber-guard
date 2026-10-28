@@ -1,0 +1,11 @@
+.git
+node_modules
+vendor
+.env
+.env*
+.vercel
+*.sqlite-shm
+*.sqlite-wal
+storage/
+public/storage/
+php.ini
