@@ -10,6 +10,7 @@ if ($uri === '') {
 }
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$routeMethod = $method === 'HEAD' ? 'GET' : $method;
 
 $routes = [
     ['GET', '/', [PublicController::class, 'home']],
@@ -36,7 +37,7 @@ $routes = [
 ];
 
 foreach ($routes as [$httpMethod, $path, $handler]) {
-    if ($method === $httpMethod && $uri === $path) {
+    if ($routeMethod === $httpMethod && $uri === $path) {
         echo call_user_func($handler);
         exit;
     }
@@ -57,7 +58,7 @@ if (preg_match('#^/assignment/([0-9]+)/grade$#', $uri, $matches) && $method === 
     exit;
 }
 
-if (preg_match('#^/assignment-submission/([0-9]+)/download$#', $uri, $matches) && $method === 'GET') {
+if (preg_match('#^/assignment-submission/([0-9]+)/download$#', $uri, $matches) && $routeMethod === 'GET') {
     AssignmentController::download((int) $matches[1]);
     exit;
 }
@@ -67,7 +68,7 @@ if (preg_match('#^/assignment/([0-9]+)$#', $uri, $matches)) {
     exit;
 }
 
-if (preg_match('#^/quiz/([0-9]+)$#', $uri, $matches) && $method === 'GET') {
+if (preg_match('#^/quiz/([0-9]+)$#', $uri, $matches) && $routeMethod === 'GET') {
     echo QuizController::view((int) $matches[1]);
     exit;
 }
